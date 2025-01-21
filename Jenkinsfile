@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     echo 'Simulación del error en el job...'
-                    sh 'asdasd'
+                    exit 1
                 }
             }
         }
