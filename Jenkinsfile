@@ -8,16 +8,16 @@ pipeline {
     stages {
         stage('Correcto') {
             steps {
-                script {
-                    sh "cat archivo1.txt"
-                }
+                
+                sh "cat archivo1.txt"
+                
             }
         }
         stage('Incorrecto') {
             steps {
-                script {
-                    cho "mensaje de error"
-                }
+                
+                 cho "mensaje de error"
+                
             }
         }
     }
