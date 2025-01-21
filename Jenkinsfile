@@ -6,7 +6,14 @@ pipeline {
     }
 
     stages {
-        stage('Simular error en el job') {
+        stage('Correcto') {
+            steps {
+                script {
+                    sh "cat archivo1.txt"
+                }
+            }
+        }
+        stage('Incorrecto') {
             steps {
                 script {
                     cho "mensaje de error"
