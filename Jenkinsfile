@@ -13,7 +13,7 @@ pipeline {
         stage('Simular error en el job') {
             steps {
                 script {
-                    echo 'Simulación del error en el job'
+                    echo 'Simulación del error en el job...'
                     sh asdasd // comando a realizar el error de ejecución del job
                 }
             }
