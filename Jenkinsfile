@@ -2,30 +2,33 @@ pipeline {
     agent any
 
     triggers {
-        githubPush() //Escuchar cuando ocurra un evento push
+        githubPush() // Escucha eventos de push en el repositorio
+    }
+
+    environment {
+        RECIPIENT_EMAIL = 'rangulo1972@gmail.com' // Correo para notificaciones
     }
 
     stages {
-
-        stage('Listar estructura...') {
-            steps {
-                echo 'Listando todas las carpetas y archivos...'
-                sh 'ls -la'
-            }
-        }
-
-        stage('Visualizar archivo en especifico...') {
+        stage('Simular error en el job') {
             steps {
                 script {
-                    def archivoABuscar = 'helloworld.txt'
-                    if (fileExists(archivoABuscar)) {
-                        echo "Archivo ${archivoABuscar} ha sido encontrado y se tiene su contenido"
-                        sh "cat ${archivoABuscar}"
-                    } else {
-                        echo "Archivo ${archivoABuscar} no existe"
-                    }
+                    echo 'Simulación del error en el job'
+                    //sh asdasd // comando a realizar el error de ejecución del job
                 }
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline ejecutado correctamente.'
+        }
+        failure {
+            echo 'Error en el pipeline. Enviando notificación por correo...'
+            mail to: "${RECIPIENT_EMAIL}",
+                subject: "Error en el Pipeline: pipeline-git-simple-rama-Lunes",
+                body: "Hubo un error durante la ejecución del pipeline en la rama 'lunes'. Por favor, revisa los registros en Jenkins."
         }
     }
 }
