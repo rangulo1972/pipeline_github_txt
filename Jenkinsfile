@@ -10,10 +10,7 @@ pipeline {
             steps {
                 script {
                     echo 'Simulación del error en el job...'
-                    sh '''
-                    echo "Iniciando prueba simple..."
-                    exit 1 # Simula un error
-                    '''asdasd
+                    sh 'asdasd'
                 }
             }
         }
