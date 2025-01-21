@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     echo 'Simulación del error en el job'
-                    //sh asdasd // comando a realizar el error de ejecución del job
+                    sh asdasd // comando a realizar el error de ejecución del job
                 }
             }
         }
@@ -28,7 +28,7 @@ pipeline {
             echo 'Error en el pipeline. Enviando notificación por correo...'
             mail to: "${RECIPIENT_EMAIL}",
                 subject: "Error en el Pipeline: pipeline-git-simple-rama-Lunes",
-                body: "Hubo un error durante la ejecución del pipeline en la rama 'lunes'. Por favor, revisa los registros en Jenkins."
+                body: "Error ejecutado en la rama Lunes del repositorio."
         }
     }
 }
