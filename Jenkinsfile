@@ -5,16 +5,15 @@ pipeline {
         githubPush() // Escucha eventos de push en el repositorio
     }
 
-    environment {
-        RECIPIENT_EMAIL = 'rangulo1972@gmail.com' // Correo para notificaciones
-    }
-
     stages {
         stage('Simular error en el job') {
             steps {
                 script {
                     echo 'Simulación del error en el job...'
-                    sh asdasd // comando a realizar el error de ejecución del job
+                    sh '''
+                    echo "Iniciando prueba simple..."
+                    exit 1 # Simula un error
+                    '''asdasd
                 }
             }
         }
@@ -26,7 +25,7 @@ pipeline {
         }
         failure {
             echo 'Error en el pipeline. Enviando notificación por correo...'
-            mail to: "${RECIPIENT_EMAIL}",
+            mail to: 'rangulo1972@gmail.com',
                 subject: "Error en el Pipeline: pipeline-git-simple-rama-Lunes",
                 body: "Error ejecutado en la rama Lunes del repositorio."
         }
