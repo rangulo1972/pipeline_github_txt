@@ -9,7 +9,7 @@ pipeline {
         stage('Simular error en el job') {
             steps {
                 script {
-                    exit 1
+                    cho "mensaje de error"
                 }
             }
         }
